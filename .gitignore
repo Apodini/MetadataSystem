@@ -8,8 +8,9 @@
 
 # Apodini .gitignore File
 
+.idea
+
 # Swift Package Manager
-Package.resolved
 *.xcodeproj
 .swiftpm
 .build/

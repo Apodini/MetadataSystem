@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AssociatedTypeRequirementsKit",
+        "repositoryURL": "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git",
+        "state": {
+          "branch": null,
+          "revision": "2e4c49c21ffb2135f1c99fbfcf2119c9d24f5e8c",
+          "version": "0.3.2"
+        }
+      },
+      {
+        "package": "XCTAssertCrash",
+        "repositoryURL": "https://github.com/norio-nomura/XCTAssertCrash.git",
+        "state": {
+          "branch": null,
+          "revision": "880c5241254da53f32caf77248ee3d25cb2a9630",
+          "version": "0.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -6,8 +6,6 @@ SPDX-FileCopyrightText: 2021 Paul Schmiedmayer and the project authors (see CONT
 
 SPDX-License-Identifier: MIT
 
--->
-
 ## How to use this repository
 ### Template
 
@@ -26,20 +24,52 @@ Enter your repository-specific configuration
 
 ### ⬆️ Remove everything up to here ⬆️
 
-# Project Name
+-->
 
-[![REUSE Compliance Check](https://github.com/Apodini/Template-Repository/actions/workflows/reuseaction.yml/badge.svg)](https://github.com/Apodini/Template-Repository/actions/workflows/reuseaction.yml)
-[![Build and Test](https://github.com/Apodini/Template-Repository/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Apodini/Template-Repository/actions/workflows/build-and-test.yml)
-[![codecov](https://codecov.io/gh/Apodini/Template-Repository/branch/develop/graph/badge.svg?token=5MMKMPO5NR)](https://codecov.io/gh/Apodini/Template-Repository)
+# Metadata System
 
-## Requirements
+[![REUSE Compliance Check](https://github.com/Apodini/MetadataSystem/actions/workflows/reuseaction.yml/badge.svg)](https://github.com/Apodini/MetadataSystem/actions/workflows/reuseaction.yml)
+[![Build and Test](https://github.com/Apodini/MetadataSystem/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Apodini/MetadataSystem/actions/workflows/build-and-test.yml)
+[![codecov](https://codecov.io/gh/Apodini/MetadataSystem/branch/develop/graph/badge.svg?token=5MMKMPO5NR)](https://codecov.io/gh/Apodini/MetadataSystem)
 
-## Installation/Setup/Integration
+The Metadata System introduces an internal domain-specific language for mapping requirements into the implementation.
+
+`MetadataDefinition`s are declared inside Metadata Declaration Blocks, mapping information which is required for the
+realization and enforcement of a requirement into the implementation.
+
+This package can be used to integrate the metadata declaration language into your own system.
+
+## Integration
+
+The Metadata System uses the Swift Package Manager for dependency management.
+
+Add it to your project's list of dependencies and to the list of dependencies of your target:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Apodini/MetadataSystem.git", from: "X.X.X")
+],
+
+targets: [
+    .target(
+        name: "Your Target",
+        dependencies: [
+            .product(name: "MetadataSystem", "MetadataSystem")
+        ]
+    )
+]
+
+```
 
 ## Usage
+
+Have a look at the [ExampleMetadataSystem](https://github.com/Apodini/MetadataSystem/tree/develop/Sources/ExampleMetadataSystem)
+target which implements an exemplary system building upon the Metadata System.
+Further, [MetadataSystemTests.swift](https://github.com/Apodini/MetadataSystem/tree/develop/Tests/MetadataSystemTests/MetadataSystemTests.swift)
+shows how this example metadata system might be used.
 
 ## Contributing
 Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/Apodini/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/Apodini/.github/blob/main/CODE_OF_CONDUCT.md) first.
 
 ## License
-This project is licensed under the MIT License. See [License](https://github.com/Apodini/Template-Repository/blob/develop/LICENSE) for more information.
+This project is licensed under the MIT License. See [License](https://github.com/Apodini/MetadataSystem/blob/develop/LICENSES) for more information.
