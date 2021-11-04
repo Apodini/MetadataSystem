@@ -17,7 +17,7 @@ jobs:
     name: Build and Test
     uses: Apodini/.github/.github/workflows/build-and-test.yml@main
     with:
-      packagename: ApodiniTemplate
+      packagename: MetadataSystem
   reuse_action:
     name: REUSE Compliance Check
     uses: Apodini/.github/.github/workflows/reuse.yml@main
