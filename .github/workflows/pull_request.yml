@@ -18,7 +18,7 @@ jobs:
     uses: Apodini/.github/.github/workflows/build-and-test.yml@feature/testswiftonlytests
     with:
       packagename: MetadataSystem
-      usexcodebuildfortests: false
+      xcodebuildpostfix: -Package
   reuse_action:
     name: REUSE Compliance Check
     uses: Apodini/.github/.github/workflows/reuse.yml@main
