@@ -14,7 +14,7 @@ import PackageDescription
 let package = Package(
     name: "MetadataSystem",
     platforms: [
-        .macOS(.v12)
+        .macOS(.v11)
     ],
     products: [
         .library(name: "ApodiniContext", targets: ["ApodiniContext"]),
@@ -22,14 +22,12 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git", .upToNextMinor(from: "0.3.2")),
-
         .package(url: "https://github.com/norio-nomura/XCTAssertCrash.git", from: "0.2.0")
     ],
     targets: [
         .target(
             name: "ApodiniContext"
         ),
-
         .target(
             name: "MetadataSystem",
             dependencies: [
@@ -37,21 +35,18 @@ let package = Package(
                 .product(name: "AssociatedTypeRequirementsKit", package: "AssociatedTypeRequirementsKit")
             ]
         ),
-
         .target(
             name: "ExampleMetadataSystem",
             dependencies: [
                 .target(name: "MetadataSystem")
             ]
         ),
-
         .target(
             name: "XCTMetadataSystem",
             dependencies: [
                 .product(name: "XCTAssertCrash", package: "XCTAssertCrash", condition: .when(platforms: [.macOS]))
             ]
         ),
-
         .testTarget(
             name: "ApodiniContextTests",
             dependencies: [
@@ -59,7 +54,6 @@ let package = Package(
                 .target(name: "ApodiniContext")
             ]
         ),
-
         .testTarget(
             name: "MetadataSystemTests",
             dependencies: [
