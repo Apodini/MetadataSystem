@@ -28,8 +28,8 @@ Enter your repository-specific configuration
 
 # Metadata System
 
-[![REUSE Compliance Check](https://github.com/Apodini/MetadataSystem/actions/workflows/reuseaction.yml/badge.svg)](https://github.com/Apodini/MetadataSystem/actions/workflows/reuseaction.yml)
-[![Build and Test](https://github.com/Apodini/MetadataSystem/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Apodini/MetadataSystem/actions/workflows/build-and-test.yml)
+<!-- [![REUSE Compliance Check](https://github.com/Apodini/MetadataSystem/actions/workflows/reuseaction.yml/badge.svg)](https://github.com/Apodini/MetadataSystem/actions/workflows/reuseaction.yml) -->
+[![Build](https://github.com/Apodini/MetadataSystem/actions/workflows/build.yml/badge.svg)](https://github.com/Apodini/MetadataSystem/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/Apodini/MetadataSystem/branch/develop/graph/badge.svg?token=5MMKMPO5NR)](https://codecov.io/gh/Apodini/MetadataSystem)
 
 The Metadata System introduces an internal domain-specific language for mapping requirements into the implementation.
