@@ -72,9 +72,29 @@ class ContextKeyTests: XCTestCase {
     }
 
     func testContextKeyCopying() {
-        let context = Context([ObjectIdentifier(String.self): "asdf"])
+        let context = Context([ObjectIdentifier(String.self): .init(key: StringContextKey.self, value: "asdf")])
         let copied = Context(copying: context)
 
         XCTAssertEqual(context.description, copied.description)
+    }
+
+    func testCodableSupportAndUnsafeAdd() throws {
+        struct CodableStringContextKey: CodableContextKey {
+            typealias Value = String
+        }
+
+        let context = Context()
+        context.unsafeAdd(CodableStringContextKey.self, value: "Hello World")
+        XCTAssertRuntimeFailure(context.unsafeAdd(CodableStringContextKey.self, value: "Hello Mars"))
+
+        XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello World")
+
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+
+        let encodedContext = try encoder.encode(context)
+        let decodedContext = try decoder.decode(Context.self, from: encodedContext)
+
+        XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello World")
     }
 }

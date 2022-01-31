@@ -92,7 +92,6 @@ public class ContextNode {
         precondition(exportedEntries == nil, "Tried adding additional context values on a ContextNode which was already exported!")
 
         guard !(C.Value.self is SomeOptional.Type) else {
-        // guard !isOptional(C.Value.self) else {
             fatalError(
                 """
                 The `Value` type of a `ContextKey` or `OptionalContextKey` must not be a `Optional` type.
@@ -197,7 +196,7 @@ public class ContextNode {
     /// retrieved when everything was fully parsed.
     /// `peekValue` doesn't guarantee that. The value might change after the call as parsing continues.
     public func peekValue<C: ContextKey>(for contextKey: C.Type = C.self) -> C.Value {
-        peekExportEntry(for: contextKey)?.reduce() as? C.Value
+        peekExportEntry(for: contextKey)?.reduce().value as? C.Value
             ?? C.defaultValue
     }
 
@@ -206,7 +205,7 @@ public class ContextNode {
     /// retrieved when everything was fully parsed.
     /// `peekValue` doesn't guarantee that. The value might change after the call as parsing continues.
     public func peekValue<C: OptionalContextKey>(for contextKey: C.Type = C.self) -> C.Value? {
-        peekExportEntry(for: contextKey)?.reduce() as? C.Value
+        peekExportEntry(for: contextKey)?.reduce().value as? C.Value
     }
 }
 
