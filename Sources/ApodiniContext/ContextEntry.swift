@@ -37,7 +37,7 @@ protocol AnyContextEntry {
 
     /// Reduces all collected context keys according to the respective `OptionalContextKey.reduce(...)`.
     /// - Returns: Returns the reduced value of the respective `OptionalContextKey.Value` type.
-    func reduce() -> Any
+    func reduce() -> StoredContextValue
 
     /// Creates a new `ContextEntryCollection` with expected generic typing.
     /// - Parameters:
@@ -86,7 +86,7 @@ class ContextEntry<Key: OptionalContextKey>: AnyContextEntry {
         return ContextEntry(lhsValues + selfRHS.values)
     }
 
-    func reduce() -> Any {
+    func reduce() -> StoredContextValue {
         guard var value = values.first?.value else {
             // we guarantee in the initializer that values won't ever be empty
             fatalError("Found inconsistency. \(type(of: self)) was found with empty values array.")
@@ -104,7 +104,7 @@ class ContextEntry<Key: OptionalContextKey>: AnyContextEntry {
 
         Key.mapFinal(value: &value)
 
-        return value
+        return StoredContextValue(key: Key.self, value: value)
     }
 
     func deriveCollection(entry: AnyContextEntry, derivedFromModifier: Bool) -> AnyContextEntryCollection {
