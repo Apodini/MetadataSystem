@@ -83,11 +83,17 @@ class ContextKeyTests: XCTestCase {
             typealias Value = String
         }
 
+        struct RequiredCodableStringContextKey: CodableContextKey, ContextKey {
+            static var defaultValue: String = "Default Value!"
+            typealias Value = String
+        }
+
         let context = Context()
         context.unsafeAdd(CodableStringContextKey.self, value: "Hello World")
         XCTAssertRuntimeFailure(context.unsafeAdd(CodableStringContextKey.self, value: "Hello Mars"))
 
         XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello World")
+        XCTAssertEqual(context.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
 
         let encoder = JSONEncoder()
         let decoder = JSONDecoder()
@@ -96,5 +102,6 @@ class ContextKeyTests: XCTestCase {
         let decodedContext = try decoder.decode(Context.self, from: encodedContext)
 
         XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello World")
+        XCTAssertEqual(decodedContext.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
     }
 }
