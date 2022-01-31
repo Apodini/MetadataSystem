@@ -160,7 +160,9 @@ extension Context: Codable {
             entries[contextKey.identifier] = try contextKey.anyEncode(value: storedValue.value)
         }
 
-        entries.merge(self.decodedEntries) { _, new in new }
+        entries.merge(self.decodedEntries) { current, new in
+            fatalError("Encountered context value conflicts of \(current) and \(new)!")
+        }
 
         for (key, data) in entries {
             try container.encode(data, forKey: StringContextKey(stringValue: key))
