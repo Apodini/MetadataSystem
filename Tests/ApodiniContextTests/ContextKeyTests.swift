@@ -103,10 +103,11 @@ class ContextKeyTests: XCTestCase {
         XCTAssertEqual(context.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
 
         let encoder = FineJSONEncoder()
+        encoder.jsonSerializeOptions = .init(isPrettyPrint: false)
         let decoder = FineJSONDecoder()
 
         let encodedContext = try encoder.encode(context)
-        XCTAssertEqual(String(data: encodedContext, encoding: .utf8), "{\"CodableStringContextKey\":\"IkhlbGxvIFdvcmxkIg==\",\"CodableArrayStringContextKey\":\"WyJIZWxsbyBTdW4iXQ==\"}")
+        XCTAssertEqual(String(data: encodedContext, encoding: .utf8), "{\"CodableArrayStringContextKey\":\"WyJIZWxsbyBTdW4iXQ==\",\"CodableStringContextKey\":\"IkhlbGxvIFdvcmxkIg==\"}")
         let decodedContext = try decoder.decode(Context.self, from: encodedContext)
 
         XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello World")
