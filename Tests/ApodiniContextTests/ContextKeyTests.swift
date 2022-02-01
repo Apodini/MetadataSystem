@@ -88,20 +88,30 @@ class ContextKeyTests: XCTestCase {
             typealias Value = String
         }
 
+        struct CodableArrayStringContextKey: CodableContextKey {
+            typealias Value = [String]
+        }
+
         let context = Context()
         context.unsafeAdd(CodableStringContextKey.self, value: "Hello World")
         XCTAssertRuntimeFailure(context.unsafeAdd(CodableStringContextKey.self, value: "Hello Mars"))
+        context.unsafeAdd(CodableArrayStringContextKey.self, value: ["Hello Sun"])
 
         XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello World")
         XCTAssertEqual(context.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
+        XCTAssertEqual(context.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
 
         let encoder = JSONEncoder()
+        encoder.dataEncodingStrategy = .deferredToData
         let decoder = JSONDecoder()
+        decoder.dataDecodingStrategy = .deferredToData
 
         let encodedContext = try encoder.encode(context)
+        XCTAssertEqual(String(data: encodedContext, encoding: .utf8), "{\"CodableStringContextKey\":\"IkhlbGxvIFdvcmxkIg==\",\"CodableArrayStringContextKey\":\"WyJIZWxsbyBTdW4iXQ==\"}")
         let decodedContext = try decoder.decode(Context.self, from: encodedContext)
 
         XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello World")
         XCTAssertEqual(decodedContext.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
+        XCTAssertEqual(decodedContext.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
     }
 }
