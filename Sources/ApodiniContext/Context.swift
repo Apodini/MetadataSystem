@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OrderedCollections
 
 private class ContextBox {
     var entries: [ObjectIdentifier: StoredContextValue]
@@ -151,7 +152,7 @@ extension Context: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: StringContextKey.self)
 
-        var entries: [String: String] = [:]
+        var entries: OrderedDictionary<String, String> = [:]
 
         for storedValue in self.entries.values {
             guard let contextKey = storedValue.key as? AnyCodableContextKey.Type else {
@@ -164,6 +165,8 @@ extension Context: Codable {
         entries.merge(self.decodedEntries) { current, new in
             fatalError("Encountered context value conflicts of \(current) and \(new)!")
         }
+
+        entries.sort()
 
         for (key, base64String) in entries {
             try container.encode(base64String, forKey: StringContextKey(stringValue: key))

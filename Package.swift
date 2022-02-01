@@ -22,11 +22,15 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git", .upToNextMinor(from: "0.3.2")),
+        .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/norio-nomura/XCTAssertCrash.git", from: "0.2.0")
     ],
     targets: [
         .target(
-            name: "ApodiniContext"
+            name: "ApodiniContext",
+            dependencies: [
+                .product(name: "OrderedCollections", package: "swift-collections")
+            ]
         ),
         .target(
             name: "MetadataSystem",
