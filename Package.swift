@@ -23,7 +23,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git", .upToNextMinor(from: "0.3.2")),
         .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/norio-nomura/XCTAssertCrash.git", from: "0.2.0")
+        .package(url: "https://github.com/norio-nomura/XCTAssertCrash.git", from: "0.2.0"),
+        .package(url: "https://github.com/omochi/FineJSON.git", from: "1.14.0")
     ],
     targets: [
         .target(
@@ -55,7 +56,8 @@ let package = Package(
             name: "ApodiniContextTests",
             dependencies: [
                 .target(name: "XCTMetadataSystem"),
-                .target(name: "ApodiniContext")
+                .target(name: "ApodiniContext"),
+                .product(name: "FineJSON", package: "FineJSON")
             ]
         ),
         .testTarget(
