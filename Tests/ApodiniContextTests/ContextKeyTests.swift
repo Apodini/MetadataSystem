@@ -9,6 +9,7 @@
 import XCTest
 import XCTMetadataSystem
 @testable import ApodiniContext
+import FineJSON
 
 class ContextKeyTests: XCTestCase {
     func testContextKeys() {
@@ -88,20 +89,29 @@ class ContextKeyTests: XCTestCase {
             typealias Value = String
         }
 
+        struct CodableArrayStringContextKey: CodableContextKey {
+            typealias Value = [String]
+        }
+
         let context = Context()
         context.unsafeAdd(CodableStringContextKey.self, value: "Hello World")
         XCTAssertRuntimeFailure(context.unsafeAdd(CodableStringContextKey.self, value: "Hello Mars"))
+        context.unsafeAdd(CodableArrayStringContextKey.self, value: ["Hello Sun"])
 
         XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello World")
         XCTAssertEqual(context.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
+        XCTAssertEqual(context.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
 
-        let encoder = JSONEncoder()
-        let decoder = JSONDecoder()
+        let encoder = FineJSONEncoder()
+        encoder.jsonSerializeOptions = .init(isPrettyPrint: false)
+        let decoder = FineJSONDecoder()
 
         let encodedContext = try encoder.encode(context)
+        XCTAssertEqual(String(data: encodedContext, encoding: .utf8), "{\"CodableArrayStringContextKey\":\"WyJIZWxsbyBTdW4iXQ==\",\"CodableStringContextKey\":\"IkhlbGxvIFdvcmxkIg==\"}")
         let decodedContext = try decoder.decode(Context.self, from: encodedContext)
 
         XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello World")
         XCTAssertEqual(decodedContext.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
+        XCTAssertEqual(decodedContext.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
     }
 }

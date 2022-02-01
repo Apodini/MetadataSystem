@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OrderedCollections
 
 private class ContextBox {
     var entries: [ObjectIdentifier: StoredContextValue]
@@ -28,9 +29,10 @@ public struct Context: ContextKeyRetrievable {
     private var entries: [ObjectIdentifier: StoredContextValue] {
         boxedEntries.entries
     }
-    private let decodedEntries: [String: Data]
+    /// Mapping from ``CodableContextKey/identifier`` to base64 encoded data
+    private let decodedEntries: [String: String]
 
-    init(_ entries: [ObjectIdentifier: StoredContextValue] = [:], _ decodedEntries: [String: Data] = [:]) {
+    init(_ entries: [ObjectIdentifier: StoredContextValue] = [:], _ decodedEntries: [String: String] = [:]) {
         self.boxedEntries = ContextBox(entries)
         self.decodedEntries = decodedEntries
     }
@@ -138,10 +140,10 @@ extension Context: Codable {
 
         self.boxedEntries = ContextBox([:])
 
-        var decodedEntries: [String: Data] = [:]
+        var decodedEntries: [String: String] = [:]
 
         for key in container.allKeys {
-            decodedEntries[key.stringValue] = try container.decode(Data.self, forKey: key)
+            decodedEntries[key.stringValue] = try container.decode(String.self, forKey: key)
         }
 
         self.decodedEntries = decodedEntries
@@ -150,7 +152,7 @@ extension Context: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: StringContextKey.self)
 
-        var entries: [String: Data] = [:]
+        var entries: OrderedDictionary<String, String> = [:]
 
         for storedValue in self.entries.values {
             guard let contextKey = storedValue.key as? AnyCodableContextKey.Type else {
@@ -164,8 +166,10 @@ extension Context: Codable {
             fatalError("Encountered context value conflicts of \(current) and \(new)!")
         }
 
-        for (key, data) in entries {
-            try container.encode(data, forKey: StringContextKey(stringValue: key))
+        entries.sort()
+
+        for (key, base64String) in entries {
+            try container.encode(base64String, forKey: StringContextKey(stringValue: key))
         }
     }
 }
