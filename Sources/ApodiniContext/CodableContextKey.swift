@@ -24,10 +24,12 @@ private let encoder = JSONEncoder()
 private let decoder = JSONDecoder()
 
 extension CodableContextKey {
+    /// Default identifier is derived from the swift type name
     public static var identifier: String {
         "\(Self.self)"
     }
 
+    /// Default implementation for anyEncode to base64 string.
     public static func anyEncode(value: Any) throws -> String {
         guard let value = value as? Self.Value else {
             fatalError("CodableContextKey.anyEncode(value:) received illegal value type \(type(of: value)) instead of \(Value.self)")
@@ -38,6 +40,7 @@ extension CodableContextKey {
             .base64EncodedString()
     }
 
+    /// Default implementation for decode from base64 string.
     public static func decode(from base64String: String) throws -> Value {
         guard let data = Data(base64Encoded: base64String) else {
             fatalError("Failed to unwrap bas64 encoded data string: \(base64String)")
