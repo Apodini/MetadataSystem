@@ -89,10 +89,12 @@ public struct Context: ContextKeyRetrievable {
     /// - Parameters:
     ///   - contextKey: The context to add value for.
     ///   - value: The value to add.
-    public func unsafeAdd<C: OptionalContextKey>(_ contextKey: C.Type = C.self, value: C.Value) {
+    ///   - allowOverwrite: This Bool controls if the unsafe addition should allow overwriting an existing entry.
+    ///     Use this option with caution! This method does NOT reduce multiple values for the same key. It OVERWRITES!
+    public func unsafeAdd<C: OptionalContextKey>(_ contextKey: C.Type = C.self, value: C.Value, allowOverwrite: Bool = false) {
         let key = ObjectIdentifier(contextKey)
 
-        precondition(entries[key] == nil, "Cannot overwrite existing ContextKey entry with `unsafeAdd`: \(C.self): \(value)")
+        precondition(entries[key] == nil || allowOverwrite, "Cannot overwrite existing ContextKey entry with `unsafeAdd`: \(C.self): \(value)")
         if let codableContextKey = contextKey as? AnyCodableContextKey.Type {
             // we need to prevent this. as Otherwise we would need to handle merging this stuff which get really complex
             precondition(decodedEntries[codableContextKey.identifier] == nil, "Cannot overwrite existing CodableContextKey entry with `unsafeAdd`: \(C.self): \(value)")

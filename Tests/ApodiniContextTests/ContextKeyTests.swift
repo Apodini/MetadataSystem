@@ -114,4 +114,17 @@ class ContextKeyTests: XCTestCase {
         XCTAssertEqual(decodedContext.get(valueFor: RequiredCodableStringContextKey.self), "Default Value!")
         XCTAssertEqual(decodedContext.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
     }
+
+    func testUnsafeAddAllowingOverwrite() {
+        struct CodableStringContextKey: CodableContextKey {
+            typealias Value = String
+        }
+
+        let context = Context()
+
+        context.unsafeAdd(CodableStringContextKey.self, value: "Hello World")
+        XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello World")
+        context.unsafeAdd(CodableStringContextKey.self, value: "Hello Mars", allowOverwrite: true)
+        XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello Mars")
+    }
 }
