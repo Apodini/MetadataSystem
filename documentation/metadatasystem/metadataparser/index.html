@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    
+    <title>MetadataParser| Documentation</title>
+    
+    <link rel="icon"       href="../../../favicon.ico" />
+    <link rel="mask-icon"  href="../../../favicon.svg" color="#333333" />
+    <link rel='stylesheet' href='../../../css/site.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="doc-topic">
+        <nav role="navigation" class="nav documentation-nav">
+  <div class="nav__wrapper">
+    <div class="nav__background"></div>
+    <div class="nav-content">
+      <div class="nav-title">
+        <span class="nav-title-link inactive">Documentation</span>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-menu-tray">
+          <ul class="nav-menu-items hierarchy">
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                
+                  <a href="../index.html" class="item">MetadataSystem</a>
+                
+              </li>
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                  <span class="current item">MetadataParser</span>
+                
+                
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main" role="main" class="main">
+  <div class="topictitle">
+  <span class="eyebrow">Protocol</span>
+  <h1 class="title">MetadataParser</h1>
+</div>
+
+  <div class="container content-grid">
+  <div class="description">
+    <div class="abstract content">
+      An instance of this protocol is used to visit a <a href='../../../documentation/metadatasystem/anymetadata/index.html'><code>AnyMetadata</code></a> tree.
+    </div>
+  </div>
+  
+  <!-- The sidebar once we have one: <div class="summary"></div> -->
+  
+  <div class="primary-content">
+    <section id='declaration' class='declaration'>
+  <h2>Declaration</h2>
+  <div class='declaration-group'>
+    <pre class='source indented'><code><span class='token-keyword'>protocol</span> <span class='token-identifier'>MetadataParser</span></code></pre>
+  </div>
+</section>
+
+  </div>
+</div>
+
+  
+  <section id='topics' class='contenttable alt-light'>
+  <div class='container'>
+    <h2 class='title'>Topics</h2>
+
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Instance Methods</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/addcontext(_:value:scope:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>addContext</span><span class='decorator'>&lt;</span><span class='decorator'>C</span><span class='decorator'>&gt;(</span><span class='decorator'>C</span><span class='decorator'>.Type, </span><span class='decorator'>value</span><span class='decorator'>: </span><span class='decorator'>C</span><span class='decorator'>.</span><span class='decorator'>Value</span><span class='decorator'>, </span><span class='decorator'>scope</span><span class='decorator'>: </span><span class='decorator'>Scope</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Adds a new context value to the current context of the <a href='../../../documentation/metadatasystem/metadataparser/index.html'><code>MetadataParser</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/visit(array:)-8zhx3.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Array</span><span class='decorator'>&gt;(</span><span class='decorator'>array</span><span class='decorator'>: </span><span class='decorator'>Array</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Called to visit an <a href='../../../documentation/metadatasystem/anymetadataarray/index.html'><code>AnyMetadataArray</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/visit(block:)-7fgom.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Block</span><span class='decorator'>&gt;(</span><span class='decorator'>block</span><span class='decorator'>: </span><span class='decorator'>Block</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Called to visit an <a href='../../../documentation/metadatasystem/anymetadatablock/index.html'><code>AnyMetadataBlock</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/visit(definition:)-5wap1.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Definition</span><span class='decorator'>&gt;(</span><span class='decorator'>definition</span><span class='decorator'>: </span><span class='decorator'>Definition</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Called to visit a <a href='../../../documentation/metadatasystem/metadatadefinition/index.html'><code>MetadataDefinition</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/visit(empty:)-462m3.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Empty</span><span class='decorator'>&gt;(</span><span class='decorator'>empty</span><span class='decorator'>: </span><span class='decorator'>Empty</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Called to visit an <a href='../../../documentation/metadatasystem/emptymetadata/index.html'><code>EmptyMetadata</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/visit(restrictedblock:)-9oga3.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Block</span><span class='decorator'>&gt;(</span><span class='decorator'>restrictedBlock</span><span class='decorator'>: </span><span class='decorator'>Block</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Called to visit a <a href='../../../documentation/metadatasystem/restrictedmetadatablock/index.html'><code>RestrictedMetadataBlock</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadataparser/visit(wrapped:)-8n8cw.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Wrapped</span><span class='decorator'>&gt;(</span><span class='decorator'>wrapped</span><span class='decorator'>: </span><span class='decorator'>Wrapped</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Called to visit a <a href='../../../documentation/metadatasystem/wrappedmetadatadefinition/index.html'><code>WrappedMetadataDefinition</code></a>.</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+  
+</main>
+
+      </div>
+    </div>
+    <footer class="footer"></footer>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

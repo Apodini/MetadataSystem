@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    
+    <title>MetadataDefinition| Documentation</title>
+    
+    <link rel="icon"       href="../../../favicon.ico" />
+    <link rel="mask-icon"  href="../../../favicon.svg" color="#333333" />
+    <link rel='stylesheet' href='../../../css/site.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="doc-topic">
+        <nav role="navigation" class="nav documentation-nav">
+  <div class="nav__wrapper">
+    <div class="nav__background"></div>
+    <div class="nav-content">
+      <div class="nav-title">
+        <span class="nav-title-link inactive">Documentation</span>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-menu-tray">
+          <ul class="nav-menu-items hierarchy">
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                
+                  <a href="../index.html" class="item">MetadataSystem</a>
+                
+              </li>
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                  <span class="current item">MetadataDefinition</span>
+                
+                
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main" role="main" class="main">
+  <div class="topictitle">
+  <span class="eyebrow">Protocol</span>
+  <h1 class="title">MetadataDefinition</h1>
+</div>
+
+  <div class="container content-grid">
+  <div class="description">
+    <div class="abstract content">
+      A <code>MetadataDefinition</code> represents a specific type of Metadata which can be declared on appropriate locations, like in the Metadata Declaration blocks of a <code>Component</code>.
+    </div>
+  </div>
+  
+  <!-- The sidebar once we have one: <div class="summary"></div> -->
+  
+  <div class="primary-content">
+    <section id='declaration' class='declaration'>
+  <h2>Declaration</h2>
+  <div class='declaration-group'>
+    <pre class='source indented'><code><span class='token-keyword'>protocol</span> <span class='token-identifier'>MetadataDefinition</span> : <a class='type-identifier-link' href='../../../documentation/metadatasystem/anymetadata/index.html'><span>AnyMetadata</span></a></code></pre>
+  </div>
+</section>
+<div class='content'><h2 id='overview'>Overview</h2><aside class='note'><p class='label'>Note</p><p><p>When creating <a href='../../../documentation/metadatasystem/metadatadefinition/index.html'><code>MetadataDefinition</code></a>s it is advised to give them unique and precise names. The Metadata DSL subsystem is designed in such a way, that the Type name itself will and should not be the name used by the user in the Metadata DSL. Therefore there is no reason to keep the names short or name them according to some “natural language flow”. Ideally all such definitions should have the “Metadata” suffix (maybe adding even the scope e.g. “XXXXHandlerMetadata”). The name used in the Metadata DSL (the one which should ideally reflect the “natural language flow”) can be defined by extending the appropriate Metadata Namespace: <code>ComponentMetadataNamespace</code>, <code>HandlerMetadataNamespace</code>, <code>WebServiceMetadataNamespace</code> or <code>ContentMetadataNamespace</code>.</p></p></p></aside></div>
+  </div>
+</div>
+
+  
+  <section id='topics' class='contenttable alt-light'>
+  <div class='container'>
+    <h2 class='title'>Topics</h2>
+
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Associated Types</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadatadefinition/key.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>associatedtype</span><span class='decorator empty-token'> </span><span class='identifier'>Key</span><span class='decorator'> : </span><span class='decorator'>OptionalContextKey</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Either a <code>OptionalContextKey</code> or <code>ContextKey</code> used to store and identify the Metadata value.</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Instance Properties</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadatadefinition/value.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>var</span><span class='decorator empty-token'> </span><span class='identifier'>value</span><span class='decorator'>: </span><span class='decorator'>Self</span><span class='decorator'>.</span><span class='decorator'>Key</span><span class='decorator'>.</span><span class='decorator'>Value</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The value which is to be stored.</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Type Properties</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/metadatadefinition/scope-3th2n.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>static</span><span class='decorator empty-token'> </span><span class='decorator'>var</span><span class='decorator empty-token'> </span><span class='identifier'>scope</span><span class='decorator'>: </span><span class='decorator'>Scope</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The <code>Scope</code> in which the value is stored. In most cases you should not need to provide a custom value for this property. Apodini provides strong defaults, <code>Scope.current</code> for most Metadata and <code>Scope.environment</code> for Component Metadata.</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+  
+</main>
+
+      </div>
+    </div>
+    <footer class="footer"></footer>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

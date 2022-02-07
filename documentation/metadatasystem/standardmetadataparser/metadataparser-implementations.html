@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    
+    <title>MetadataParser Implementations| Documentation</title>
+    
+    <link rel="icon"       href="../../../favicon.ico" />
+    <link rel="mask-icon"  href="../../../favicon.svg" color="#333333" />
+    <link rel='stylesheet' href='../../../css/site.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="doc-topic">
+        <nav role="navigation" class="nav documentation-nav">
+  <div class="nav__wrapper">
+    <div class="nav__background"></div>
+    <div class="nav-content">
+      <div class="nav-title">
+        <span class="nav-title-link inactive">Documentation</span>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-menu-tray">
+          <ul class="nav-menu-items hierarchy">
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                
+                  <a href="../index.html" class="item">MetadataSystem</a>
+                
+              </li>
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                
+                  <a href="index.html" class="item">StandardMetadataParser</a>
+                
+              </li>
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                  <span class="current item">MetadataParser Implementations</span>
+                
+                
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main" role="main" class="main">
+  <div class="topictitle">
+  <span class="eyebrow"></span>
+  <h1 class="title">MetadataParser Implementations</h1>
+</div>
+
+  
+  
+  <section id='topics' class='contenttable alt-light'>
+  <div class='container'>
+    <h2 class='title'>Topics</h2>
+
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Instance Methods</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/standardmetadataparser/visit(array:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Array</span><span class='decorator'>&gt;(</span><span class='decorator'>array</span><span class='decorator'>: </span><span class='decorator'>Array</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The default implementation visits every entry in the <a href='../../../documentation/metadatasystem/anymetadataarray/index.html'><code>AnyMetadataArray</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/standardmetadataparser/visit(block:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Block</span><span class='decorator'>&gt;(</span><span class='decorator'>block</span><span class='decorator'>: </span><span class='decorator'>Block</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The default implementation visits the content of the <a href='../../../documentation/metadatasystem/anymetadatablock/index.html'><code>AnyMetadataBlock</code></a>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/standardmetadataparser/visit(definition:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Definition</span><span class='decorator'>&gt;(</span><span class='decorator'>definition</span><span class='decorator'>: </span><span class='decorator'>Definition</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The default implementation calls <code>addContent(contextKey:value:scope:)</code> to add the value for the corresponding key to the <code>ContextNode</code>.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/standardmetadataparser/visit(empty:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Empty</span><span class='decorator'>&gt;(</span><span class='decorator'>empty</span><span class='decorator'>: </span><span class='decorator'>Empty</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The default implementation is empty.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/standardmetadataparser/visit(restrictedblock:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Block</span><span class='decorator'>&gt;(</span><span class='decorator'>restrictedBlock</span><span class='decorator'>: </span><span class='decorator'>Block</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">The default implementation forwards the call to ``visit(block:)`.</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../../documentation/metadatasystem/standardmetadataparser/visit(wrapped:).html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>func</span><span class='decorator empty-token'> </span><span class='identifier'>visit</span><span class='decorator'>&lt;</span><span class='decorator'>Wrapped</span><span class='decorator'>&gt;(</span><span class='decorator'>wrapped</span><span class='decorator'>: </span><span class='decorator'>Wrapped</span><span class='decorator'>)</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">THe default implementation visits the wrapped metadata of the <a href='../../../documentation/metadatasystem/wrappedmetadatadefinition/index.html'><code>WrappedMetadataDefinition</code></a>.</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+  
+</main>
+
+      </div>
+    </div>
+    <footer class="footer"></footer>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
