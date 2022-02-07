@@ -118,7 +118,7 @@ class ContextKeyTests: XCTestCase {
         XCTAssertEqual(decodedContext.get(valueFor: CodableArrayStringContextKey.self), ["Hello Sun"])
     }
 
-    func testUnsafeAddAllowingOverwrite() {
+    func testUnsafeAddAllowingOverwrite() throws {
         struct CodableStringContextKey: CodableContextKey {
             typealias Value = String
         }
@@ -129,5 +129,20 @@ class ContextKeyTests: XCTestCase {
         XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello World")
         context.unsafeAdd(CodableStringContextKey.self, value: "Hello Mars", allowOverwrite: true)
         XCTAssertEqual(context.get(valueFor: CodableStringContextKey.self), "Hello Mars")
+
+        let encoder = FineJSONEncoder()
+        encoder.jsonSerializeOptions = .init(isPrettyPrint: false)
+        let decoder = FineJSONDecoder()
+
+        let encodedContext = try encoder.encode(context)
+        XCTAssertEqual(
+            String(data: encodedContext, encoding: .utf8),
+            "{\"CodableStringContextKey\":\"IkhlbGxvIE1hcnMi\"}"
+        )
+
+        let decodedContext = try decoder.decode(Context.self, from: encodedContext)
+
+        decodedContext.unsafeAdd(CodableStringContextKey.self, value: "Hello Saturn", allowOverwrite: true)
+        XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello Saturn")
     }
 }
