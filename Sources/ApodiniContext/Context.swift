@@ -121,7 +121,9 @@ public struct Context: ContextKeyRetrievable {
         }
 
         do {
-            return try Key.decode(from: dataValue)
+            let value = try Key.decode(from: dataValue)
+            boxedEntries.entries[ObjectIdentifier(key)] = StoredContextValue(key: key, value: value)
+            return value
         } catch {
             fatalError("Error occurred when trying to decode `CodableContextKey` `\(Key.self)` with stored value '\(dataValue)': \(error)")
         }

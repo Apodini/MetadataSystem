@@ -141,6 +141,8 @@ class ContextKeyTests: XCTestCase {
         )
 
         let decodedContext = try decoder.decode(Context.self, from: encodedContext)
+        XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello Mars")
+        XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello Mars")
 
         decodedContext.unsafeAdd(CodableStringContextKey.self, value: "Hello Saturn", allowOverwrite: true)
         XCTAssertEqual(decodedContext.get(valueFor: CodableStringContextKey.self), "Hello Saturn")
