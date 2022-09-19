@@ -7,7 +7,6 @@
 //
 
 import ApodiniContext
-@_implementationOnly import AssociatedTypeRequirementsVisitor
 
 /// An instance of this protocol is used to visit a ``AnyMetadata`` tree.
 public protocol MetadataParser {
@@ -77,16 +76,26 @@ public extension MetadataParser {
 extension MetadataParser {
     // swiftlint:disable:next identifier_name
     func _visit<Definition: MetadataDefinition>(definition: Definition) {
-        if StandardEmptyMetadataVisitor(parser: self)(definition) == nil {
+        if let emptyBlock = definition as? any EmptyMetadata {
+            emptyBlock._accept(parser: self)
+        } else {
             self.visit(definition: definition)
         }
+//        if StandardEmptyMetadataVisitor(parser: self)(definition) == nil {
+//            self.visit(definition: definition)
+//        }
     }
 
     // swiftlint:disable:next identifier_name
     func _visit<Block: AnyMetadataBlock>(block: Block) {
-        if StandardRestrictedMetadataBlockVisitor(parser: self)(block) == nil {
+        if let restrictedBlock = block as? any RestrictedMetadataBlock {
+            restrictedBlock._accept(parser: self)
+        } else {
             self.visit(block: block)
         }
+//        if StandardRestrictedMetadataBlockVisitor(parser: self)(block) == nil {
+//            self.visit(block: block)
+//        }
     }
 }
 
@@ -106,58 +115,15 @@ public struct StandardMetadataParser: MetadataParser {
 }
 
 
-private protocol RestrictedMetadataBlockVisitor: AssociatedTypeRequirementsVisitor {
-    associatedtype Visitor = RestrictedMetadataBlockVisitor
-    associatedtype Input = RestrictedMetadataBlock
-    associatedtype Output
-
-    func callAsFunction<M: RestrictedMetadataBlock>(_ value: M) -> Output
-}
-
-private struct TestBlock: RestrictedMetadataBlock {
-    typealias RestrictedContent = TestBlock
-    var typeErasedContent: AnyMetadata {
-        fatalError("Not implemented!")
-    }
-}
-
-private extension RestrictedMetadataBlockVisitor {
-    @inline(never)
-    @_optimize(none)
-    func _test() {
-        _ = self(TestBlock())
-    }
-}
-
-private struct StandardRestrictedMetadataBlockVisitor: RestrictedMetadataBlockVisitor {
-    var parser: MetadataParser
-    func callAsFunction<M: RestrictedMetadataBlock>(_ value: M) {
-        parser.visit(restrictedBlock: value)
+extension RestrictedMetadataBlock {
+    fileprivate func _accept(parser: MetadataParser) {
+        parser.visit(restrictedBlock: self)
     }
 }
 
 
-private protocol EmptyMetadataVisitor: AssociatedTypeRequirementsVisitor {
-    associatedtype Visitor = EmptyMetadataVisitor
-    associatedtype Input = EmptyMetadata
-    associatedtype Output
-
-    func callAsFunction<M: EmptyMetadata>(_ value: M) -> Output
-}
-
-private struct TestEmpty: EmptyMetadata {}
-
-private extension EmptyMetadataVisitor {
-    @inline(never)
-    @_optimize(none)
-    func _test() {
-        _ = self(TestEmpty())
-    }
-}
-
-private struct StandardEmptyMetadataVisitor: EmptyMetadataVisitor {
-    var parser: MetadataParser
-    func callAsFunction<M: EmptyMetadata>(_ value: M) {
-        parser.visit(empty: value)
+extension EmptyMetadata {
+    fileprivate func _accept(parser: MetadataParser) {
+        parser.visit(empty: self)
     }
 }
