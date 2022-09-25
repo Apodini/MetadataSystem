@@ -81,9 +81,6 @@ extension MetadataParser {
         } else {
             self.visit(definition: definition)
         }
-//        if StandardEmptyMetadataVisitor(parser: self)(definition) == nil {
-//            self.visit(definition: definition)
-//        }
     }
 
     // swiftlint:disable:next identifier_name
@@ -93,9 +90,6 @@ extension MetadataParser {
         } else {
             self.visit(block: block)
         }
-//        if StandardRestrictedMetadataBlockVisitor(parser: self)(block) == nil {
-//            self.visit(block: block)
-//        }
     }
 }
 
