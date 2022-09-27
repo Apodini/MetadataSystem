@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 
 //
 // This source file is part of the Apodini open source project
@@ -21,7 +21,6 @@ let package = Package(
         .library(name: "MetadataSystem", targets: ["MetadataSystem"])
     ],
     dependencies: [
-        .package(url: "https://github.com/nerdsupremacist/AssociatedTypeRequirementsKit.git", .upToNextMinor(from: "0.3.2")),
         .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/norio-nomura/XCTAssertCrash.git", from: "0.2.0"),
         .package(url: "https://github.com/omochi/FineJSON.git", from: "1.14.0")
@@ -36,8 +35,7 @@ let package = Package(
         .target(
             name: "MetadataSystem",
             dependencies: [
-                .target(name: "ApodiniContext"),
-                .product(name: "AssociatedTypeRequirementsKit", package: "AssociatedTypeRequirementsKit")
+                .target(name: "ApodiniContext")
             ]
         ),
         .target(
